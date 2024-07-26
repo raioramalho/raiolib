@@ -47,4 +47,4 @@ Se você tiver alguma dúvida ou sugestão, não hesite em [abrir uma issue]() o
 
 ---
 
-Desenvolvido com ❤️ por [Seu Nome/Organização]
+Desenvolvido com ❤️ por [Alan Ramalho/ RaioSystems]

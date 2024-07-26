@@ -1,0 +1,24 @@
+{
+  "name": "raio",
+  "version": "1.0.0",
+  "description": "Raio é um pacote npm que contém uma coleção de códigos modulares e genéricos para serem reutilizados em projetos TypeScript e JavaScript, com foco especial em NestJS e NextJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raioramalho/raio.git"
+  },
+  "keywords": [
+    "raioramalho",
+    "sdk",
+    "raio"
+  ],
+  "author": "Alan Ramalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raioramalho/raio/issues"
+  },
+  "homepage": "https://github.com/raioramalho/raio#readme"
+}

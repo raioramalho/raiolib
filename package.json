@@ -1,6 +1,6 @@
 {
   "name": "raiolib",
-  "version": "1.1.2b",
+  "version": "1.1.3b",
   "description": "Raio lib é um pacote npm que contém uma coleção de códigos modulares e genéricos para serem reutilizados em projetos TypeScript e JavaScript, com foco especial em NestJS e NextJS.",
   "main": "dist/index.js",
   "type": "module",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raioramalho/raio.git"
+    "url": "git+https://github.com/raioramalho/raiolib.git"
   },
   "keywords": [
     "raioramalho",
@@ -23,9 +23,9 @@
   "author": "Alan Ramalho",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/raioramalho/raio/issues"
+    "url": "https://github.com/raioramalho/raiolib/issues"
   },
-  "homepage": "https://github.com/raioramalho/raio#readme",
+  "homepage": "https://github.com/raioramalho/raiolib#readme",
   "devDependencies": {
     "@types/node": "^20.14.12",
     "bun": "^1.1.20",

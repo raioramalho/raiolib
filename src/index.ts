@@ -8,12 +8,14 @@
  * @date 26-07-2024
  */
 
+/**
+ * Importação do serviço de CEP
+ * Este serviço é responsável por operações relacionadas a CEP (Código de Endereçamento Postal)
+ */
+import { CepService } from "./services/cep/cep.service";
 
 /**
- * Função que soma dois números.
- * @param a Número 1
- * @param b Número 2
+ * Exportação do serviço de CEP
+ * Permite que outros módulos utilizem o CepService
  */
-export function Calcular(a: number, b: number): number {
-    return a + b;
-}
+export { CepService };

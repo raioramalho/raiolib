@@ -1,6 +1,6 @@
 {
   "name": "raiolib",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "description": "Raio lib é um pacote npm que contém uma coleção de códigos modulares e genéricos para serem reutilizados em projetos TypeScript e JavaScript, com foco especial em NestJS e NextJS.",
   "main": "dist/index.js",
   "type": "module",
@@ -29,7 +29,6 @@
   "devDependencies": {
     "@types/node": "^20.14.12",
     "bun": "^1.1.20",
-    "raiolib": "^1.0.0",
     "ts-node": "^10.9.1",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",

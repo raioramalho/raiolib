@@ -31,11 +31,43 @@ import { ComponenteX, UtilY } from 'raio';
 
 ## Documentação
 
-Para mais informações sobre como usar cada componente e utilitário, consulte nossa [documentação detalhada]().
+Para mais informações sobre como usar cada componente e utilitário:
+
+### CepService
+
+O CepService é um utilitário para consulta de CEP (Código de Endereçamento Postal) brasileiro. Ele fornece uma interface simples para buscar informações de endereço a partir de um CEP.
+
+#### Características:
+
+- Consulta de CEP utilizando a API ViaCEP
+- Retorna informações detalhadas do endereço (logradouro, bairro, cidade, estado)
+- Tratamento de erros para CEPs inválidos ou não encontrados
+
+#### Exemplo de uso:
+
+
+import { CepService } from 'raio';
+
+const cepService = new CepService();
+
+async function buscarEndereco(cep: string) {
+  try {
+    const endereco = await cepService.buscarCep(cep);
+    console.log(endereco);
+  } catch (error) {
+    console.error('Erro ao buscar CEP:', error.message);
+  }
+}
+
+buscarEndereco('01001000');
+
+
+Para mais detalhes sobre os métodos disponíveis e opções de configuração, consulte a documentação completa do CepService.
+
 
 ## Contribuição
 
-Contribuições são bem-vindas! Por favor, leia nossas [diretrizes de contribuição]() antes de enviar um pull request.
+Contribuições são bem-vindas! Por favor.
 
 ## Licença
 

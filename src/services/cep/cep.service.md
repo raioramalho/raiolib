@@ -26,5 +26,3 @@ async function buscarEndereco(cep: string) {
 
 buscarEndereco('01001000');
 
-
-Para mais detalhes sobre os métodos disponíveis e opções de configuração, consulte a documentação completa do CepService.

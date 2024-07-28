@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest --watch",
+    "test:cov": "vitest --watch --coverage",
     "prepublishOnly": "npm run build",
     "dev": "tsx --watch src/index.ts"
   },
@@ -27,7 +28,8 @@
   },
   "homepage": "https://github.com/raioramalho/raiolib#readme",
   "devDependencies": {
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.0.4",
     "bun": "^1.1.20",
     "ts-node": "^10.9.1",
     "tsx": "^4.16.2",

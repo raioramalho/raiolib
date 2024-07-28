@@ -1,4 +1,4 @@
-import { ExecuteDownloadImageDto } from "../../cep/dto/execute.download.image.dto";
+import { ExecuteDownloadImageDto } from "../dto/execute.download.image.dto";
 import { ImageDto } from "../dto/image.dto";
 
 /**

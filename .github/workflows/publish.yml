@@ -47,6 +47,9 @@ jobs:
       - name: Install dependencies and build 🔧
         run: npm ci && npm run build
 
+      - name: Run tests
+        run: npm test
+
       - name: Publish
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc

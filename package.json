@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "vitest --watch",
+    "test": "vitest",
+    "test:w": "vitest --watch",
     "test:cov": "vitest --watch --coverage",
     "prepublishOnly": "npm run build",
     "dev": "tsx --watch src/index.ts"

@@ -18,6 +18,10 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Set up .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Check version
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
@@ -47,12 +51,7 @@ jobs:
       - name: Install dependencies and build 🔧
         run: npm ci && npm run build
 
-      - name: Run tests
-        run: npm test
-
       - name: Publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,28 +1,45 @@
-### Conteudo ==>
+# CepService
 
-1 - O CepService é um utilitário para consulta de CEP (Código de Endereçamento Postal) brasileiro. Ele fornece uma interface simples para buscar informações de endereço a partir de um CEP.
+O `CepService` é uma classe responsável por gerenciar o serviço de consulta de CEP (Código de Endereçamento Postal) no Brasil. Ele permite a busca de informações de endereço a partir de um CEP fornecido, utilizando diferentes APIs de serviço de CEP.
 
-#### Características:
+## Funcionalidades
 
-- Consulta de CEP utilizando a API ViaCEP
-- Retorna informações detalhadas do endereço (logradouro, bairro, cidade, estado)
-- Tratamento de erros para CEPs inválidos ou não encontrados
+- Suporte a múltiplas APIs de serviço de CEP
+- Busca de informações de endereço a partir de um CEP
 
-#### Exemplo de uso:
+## Uso
 
 
-import { CepService } from 'raio';
+const cepService = new CepService('viacep');
+const cepInfo = await cepService.findCep('01001000');
 
-const cepService = new CepService();
 
-async function buscarEndereco(cep: string) {
-  try {
-    const endereco = await cepService.buscarCep(cep);
-    console.log(endereco);
-  } catch (error) {
-    console.error('Erro ao buscar CEP:', error.message);
-  }
-}
+## Construtor
 
-buscarEndereco('01001000');
 
+constructor(base: BaseType)
+
+
+- `base`: O serviço de CEP a ser utilizado (ex: 'cepawesome', 'viacep')
+
+## Métodos
+
+### findCep
+
+
+async findCep(cep: string): Promise<any>
+
+
+Busca informações de CEP utilizando a API selecionada.
+
+- `cep`: O CEP a ser consultado
+- Retorna: Uma Promise com as informações do CEP
+
+## Serviços de CEP suportados
+
+- cepawesome: https://cep.awesomeapi.com.br/json/
+- viacep: https://viacep.com.br/ws/
+
+## Observações
+
+- Se o serviço de CEP especificado no construtor não for encontrado, uma exceção será lançada.

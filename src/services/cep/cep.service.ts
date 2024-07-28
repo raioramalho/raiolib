@@ -1,4 +1,4 @@
-import { fetchCep } from "./cases/fetchCep";
+import { ExecuteFindCep } from "./cases/execute.find.cep";
 
 // Objeto contendo as URLs base para diferentes serviços de CEP
 const CEP_BASES = {
@@ -35,6 +35,6 @@ export class CepService {
    * @returns Uma Promise com as informações do CEP
    */
   async findCep(cep: string) {
-    return fetchCep(this.baseUrl, this.base, cep); 
+    return ExecuteFindCep(this.baseUrl, this.base, cep); 
   }
 }

@@ -12,7 +12,7 @@ import { CepDto } from "../dto/cep.dto";
  * @returns Uma Promise que resolve para um objeto CepDto contendo as informações do CEP.
  * @throws Lança um erro se a busca falhar ou se ocorrer um erro desconhecido.
  */
-export async function fetchCep(
+export async function ExecuteFindCep(
   baseUrl: string,
   base: "cepawesome" | "viacep",
   cep: string

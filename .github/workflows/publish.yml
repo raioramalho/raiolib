@@ -18,6 +18,13 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Add NPM User
+        run: |
+          echo "registry=https://registry.npmjs.org/" > ~/.npmrc
+          echo "//registry.npmjs.org/:username=${{ secrets.NPM_USERNAME }}" >> ~/.npmrc
+          echo "//registry.npmjs.org/:_password=$(echo -n ${{ secrets.NPM_PASSWORD }} | base64)" >> ~/.npmrc
+          echo "//registry.npmjs.org/:email=${{ secrets.NPM_EMAIL }}" >> ~/.npmrc
+
       - name: Check version
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
@@ -48,8 +55,6 @@ jobs:
         run: npm ci && npm run build
 
       - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm publish

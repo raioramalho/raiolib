@@ -16,7 +16,15 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies and build 🔧
         run: npm ci && npm run build
-      - name: Publish package on NPM 📦
-        run: npm publish
+      - name: Check version and publish
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSION=$(npm view . version)
+          if [ "$(printf '%s\n' "$NPM_VERSION" "$PACKAGE_VERSION" | sort -V | tail -n1)" = "$PACKAGE_VERSION" ]; then
+            npm publish
+          else
+            echo "Package version is not greater than the one on NPM. Cancelling publish."
+            exit 1
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,19 +1,23 @@
 name: Publish to NPM
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
+
       - name: Check version
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
@@ -39,8 +43,10 @@ jobs:
             echo "Invalid version format. Expected format: X.Y.Z or X.Y.Z-b"
             exit 1
           fi
+
       - name: Install dependencies and build 🔧
         run: npm ci && npm run build
+
       - name: Publish
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc

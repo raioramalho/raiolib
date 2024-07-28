@@ -4,7 +4,7 @@
  * Este projeto contém funções, classes e interfaces para ajudar no dia a dia.
  * 
  * @author Alan Ramalho
- * @version 1.1.5-b
+ * @version 1.1.6-b
  * @date 26-07-2024
  */
 

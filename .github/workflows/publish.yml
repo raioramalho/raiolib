@@ -18,8 +18,25 @@ jobs:
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           NPM_VERSION=$(npm view . version)
-          if [ "$(printf '%s\n' "$NPM_VERSION" "$PACKAGE_VERSION" | sort -V | tail -n1)" != "$PACKAGE_VERSION" ]; then
-            echo "Package version is not greater than the one on NPM. Cancelling publish."
+          if [[ "$PACKAGE_VERSION" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)(-b)?$ ]]; then
+            MAJOR="${BASH_REMATCH[1]}"
+            MINOR="${BASH_REMATCH[2]}"
+            PATCH="${BASH_REMATCH[3]}"
+            BETA="${BASH_REMATCH[4]}"
+            if [[ "$NPM_VERSION" == "$PACKAGE_VERSION" ]]; then
+              if [[ -n "$BETA" ]]; then
+                NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))-b"
+              else
+                NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
+              fi
+              npm version $NEW_VERSION
+              echo "Version updated to $NEW_VERSION"
+            elif [[ "$(printf '%s\n' "$NPM_VERSION" "$PACKAGE_VERSION" | sort -V | tail -n1)" != "$PACKAGE_VERSION" ]]; then
+              echo "Package version is not greater than the one on NPM. Cancelling publish."
+              exit 1
+            fi
+          else
+            echo "Invalid version format. Expected format: X.Y.Z or X.Y.Z-b"
             exit 1
           fi
       - name: Install dependencies and build 🔧

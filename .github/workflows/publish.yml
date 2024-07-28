@@ -14,17 +14,17 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Install dependencies and build 🔧
-        run: npm ci && npm run build
-      - name: Check version and publish
+      - name: Check version
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           NPM_VERSION=$(npm view . version)
-          if [ "$(printf '%s\n' "$NPM_VERSION" "$PACKAGE_VERSION" | sort -V | tail -n1)" = "$PACKAGE_VERSION" ]; then
-            npm publish
-          else
+          if [ "$(printf '%s\n' "$NPM_VERSION" "$PACKAGE_VERSION" | sort -V | tail -n1)" != "$PACKAGE_VERSION" ]; then
             echo "Package version is not greater than the one on NPM. Cancelling publish."
             exit 1
           fi
+      - name: Install dependencies and build 🔧
+        run: npm ci && npm run build
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

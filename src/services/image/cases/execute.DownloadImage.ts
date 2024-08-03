@@ -21,8 +21,8 @@ export async function ExecuteDownloadImage(
 
   // Verifica se a URL do arquivo é válida
   if (!fileUrl) {
-    logError("Download file URL is empty or null");
-    throw new Error("Download file URL is empty or null");
+    logError("URL do arquivo de download está vazia ou nula");
+    throw new Error("URL do arquivo de download está vazia ou nula");
   }
 
   try {
@@ -44,10 +44,10 @@ export async function ExecuteDownloadImage(
     }
 
     // Lança um erro se o tipo de arquivo for inválido
-    throw new Error("Download Error: Invalid file type");
+    throw new Error("Erro de Download: Tipo de arquivo inválido");
   } catch (error) {
     // Registra e lança um erro em caso de falha no download
-    logError(`Download failed for URL: ${fileUrl}`, error);
-    throw new Error(`Download failed for URL: ${fileUrl}`);
+    logError(`Download falhou para a URL: ${fileUrl}`, error);
+    throw new Error(`Download falhou para a URL: ${fileUrl}`);
   }
 }

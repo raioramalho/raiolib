@@ -9,6 +9,12 @@
  */
 
 /**
+ * Importação do módulo de serviços para nestjs
+ * Este módulo exporta os servicos disponíveis na pasta services
+ */
+import { ServicesModule } from './services/services.module';
+
+/**
  * Importação do serviço de CEP
  * Este serviço é responsável por operações relacionadas a CEP (Código de Endereçamento Postal)
  */
@@ -19,6 +25,12 @@ import { CepService } from "./services/cep/cep.service";
  * Este serviço é responsável por operações relacionadas a Imagem
  */
 import { ImageService } from "./services/image/image.service";
+
+/**
+ * Exportação do módulo de serviços
+ * Permite que outros módulos utilizem os serviços disponíveis
+ */
+export { ServicesModule };
 
 /**
  * Exportação do serviço de CEP

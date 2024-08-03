@@ -37,5 +37,9 @@
     "typescript": "^5.5.4",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^2.0.4"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.3.10",
+    "@nestjs/config": "^3.2.3"
   }
 }

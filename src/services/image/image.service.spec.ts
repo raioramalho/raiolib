@@ -16,12 +16,26 @@ describe('Bateria de testes para o ImageService', () => {
   it('Deve ser possível fazer o download de uma imagem', async () => {
     const start = performance.now();
     const service = new ImageService();
-    const image = await service.download('https://fastly.picsum.photos/id/1018/200/300.jpg?hmac=IrYgAIczHOxOgmWliW3MlASD3LdAJ_aHAdh5f2aY9Sw');
+    const image = await service.download('https://blog.back4app.com/wp-content/uploads/2021/06/backend-vs-frontend-2.png');
     const end = performance.now();
     console.log(`Tempo de execução do download: ${end - start} ms`);
     expect(image).toBeDefined();
-    expect(image.type).toBe('image/jpeg');
-    expect(image.getType()).toBe('image/jpeg');
+    expect(image.type).toBe('image/png');
+    expect(image.getType()).toBe('image/png');
+    expect(image.base64).toBeDefined();
+    expect(image.getBase64()).toBeDefined();
   });
 
+  // Teste para converter uma imagem base64 para binário
+  it('Deve ser possível converter uma imagem base64 para binário', async () => {
+    const start = performance.now();
+    const service = new ImageService();
+    const image = await service.download('https://blog.back4app.com/wp-content/uploads/2021/06/backend-vs-frontend-2.png');
+    const binary = await service.getBinary(image);
+
+    const end = performance.now();
+    console.log(`Tempo de execução da conversão: ${end - start} ms`);
+    expect(binary).toBeDefined();
+    expect(binary.byteLength).toBeGreaterThan(0);
+  });
 });

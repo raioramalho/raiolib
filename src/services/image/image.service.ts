@@ -5,6 +5,7 @@ import { ImageDto } from './dto/image.dto';
 import { ExecuteDownloadImage } from './cases/execute.DownloadImage';
 import { ExecuteProcessResponse } from './cases/execute.ProcessResponse';
 import { ExecuteCheckUrlAccessibility } from './cases/execute.CheckUrlAccessibility';
+import { Base64ToBinary } from './cases/execute.Base64ToBinary';
 
 /**
  * Classe responsável pelo serviço de imagens
@@ -18,6 +19,15 @@ export class ImageService {
    */
   async download(fileUrl: string, timeout?: number) {
     return ExecuteDownloadImage({ fileUrl, timeout }, this.checkUrlAccessibility, this.processResponse, this.logError, this.logSuccess);
+  }
+
+  /**
+   * Converte uma imagem de base64 para binário
+   * @param imageDto Objeto ImageDto contendo a imagem em base64
+   * @returns Promise com o resultado da conversão
+   */
+  async getBinary(imageDto: ImageDto) {
+    return Base64ToBinary(imageDto, this.logError, this.logSuccess);
   }
 
   /**

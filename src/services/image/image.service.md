@@ -5,6 +5,7 @@ A classe `ImageService` é responsável por lidar com operações relacionadas a
 ## Métodos
 
 ### download(fileUrl: string, timeout?: number): Promise<ImageDto|Error>
+### getBinary(imageDto: ImageDto): Promise<ArrayBuffer>
 
 Faz o download de uma imagem a partir de uma URL fornecida.
 
@@ -24,3 +25,4 @@ Retorna uma Promise que resolve para um `ImageDto` ou um `Error`.
 
 const imageService = new ImageService();
 const resultado = await imageService.download('https://example.com/image.jpg');
+const arraybuffer = await imageService.getBinary(resultado);

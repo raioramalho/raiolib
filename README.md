@@ -34,12 +34,13 @@ import { ComponenteX, UtilY } from 'raiolib';
 ### Serviços Disponíveis
 
 1. **CepService**
-   - Utilitário para consulta de CEP (Código de Endereçamento Postal) brasileiro.
-   - Fornece uma interface simples para buscar informações de endereço a partir de um CEP.
+   - Utilitário para consulta de CEP (Código de Endereçamento Postal) brasileiro. 1.1.1-a.
+   - Fornece uma interface simples para buscar informações de endereço a partir de um CEP. 1.1.2-a.
 
 2. **ImageService**
-   - Utilitário para download de imagens a partir de uma URL.
-   - Retorna o tipo de arquivo e o conteúdo em base64.
+   - Utilitário para download de imagens a partir de uma URL. 1.1.1-b.
+   - Retorna o tipo de arquivo e o conteúdo em base64. 1.1.3-b.
+   - Converte o base64 em ArrayBuffer. 1.1.7-b.
 
 Para mais informações sobre como usar cada componente e utilitário, consulte a documentação específica de cada serviço.
 

@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { ExecuteFindCep } from "./cases/execute.find.cep";
 
 // Objeto contendo as URLs base para diferentes serviços de CEP
@@ -12,6 +13,7 @@ type BaseType = keyof typeof CEP_BASES;
 /**
  * Classe responsável por gerenciar o serviço de consulta de CEP
  */
+@Injectable()
 export class CepService {
   private readonly baseUrl: string;
   private readonly base: BaseType;

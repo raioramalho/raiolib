@@ -40,6 +40,9 @@
   },
   "dependencies": {
     "@nestjs/common": "^10.3.10",
-    "@nestjs/config": "^3.2.3"
+    "@nestjs/config": "^3.2.3",
+    "@onesignal/node-onesignal": "^5.0.0-alpha-01",
+    "reflect-metadata": "^0.2.2",
+    "rxjs-operators": "^1.1.3"
   }
 }

@@ -54,6 +54,8 @@ jobs:
             exit 1
           fi
           echo "Versão validada. Pronta para publicação."
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Buildar Projeto
         run: npm run build

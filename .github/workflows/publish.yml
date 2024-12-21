@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: NPM_TOKEN
     steps:
       - name: Fazer Checkout do Código
         uses: actions/checkout@v3
@@ -24,6 +25,10 @@ jobs:
           echo "//registry.npmjs.org/:username=${{ secrets.NPM_USERNAME }}" >> ~/.npmrc
           echo "//registry.npmjs.org/:_password=$(echo -n ${{ secrets.NPM_PASSWORD }} | base64)" >> ~/.npmrc
           echo "//registry.npmjs.org/:email=${{ secrets.NPM_EMAIL }}" >> ~/.npmrc
+        env:
+          NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+          NPM_PASSWORD: ${{ secrets.NPM_PASSWORD }}
+          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
 
       - name: Verificar Versão
         run: |

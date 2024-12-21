@@ -32,19 +32,19 @@ jobs:
 
       - name: Validar Configuração do Ambiente
         run: |
-          if [ -z "${{ secrets.NODE_AUTH_TOKEN }}" ]; then
-            echo "Erro: O segredo NODE_AUTH_TOKEN não está configurado!" >&2
+          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "Erro: O segredo NPM_TOKEN não está configurado!" >&2
             exit 1
           fi
           echo "Todos os segredos necessários estão configurados."
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Validar Login no NPM
         run: |
           npm whoami || (echo "Erro: Não foi possível autenticar no NPM. Verifique o token de autenticação." >&2 && exit 1)
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Verificar Dependências
         run: |

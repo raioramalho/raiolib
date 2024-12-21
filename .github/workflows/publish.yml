@@ -1,4 +1,4 @@
-name: Publish to NPM
+name: Publicar no NPM
 
 on:
   push:
@@ -9,23 +9,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Fazer Checkout do Código
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Add NPM User
+      - name: Adicionar Usuário NPM
         run: |
           echo "registry=https://registry.npmjs.org/" > ~/.npmrc
           echo "//registry.npmjs.org/:username=${{ secrets.NPM_USERNAME }}" >> ~/.npmrc
           echo "//registry.npmjs.org/:_password=$(echo -n ${{ secrets.NPM_PASSWORD }} | base64)" >> ~/.npmrc
           echo "//registry.npmjs.org/:email=${{ secrets.NPM_EMAIL }}" >> ~/.npmrc
 
-      - name: Check version
+      - name: Verificar Versão
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           NPM_VERSION=$(npm view . version)
@@ -51,10 +51,10 @@ jobs:
             exit 1
           fi
 
-      - name: Install dependencies and build
-        run: npm ci && npm run build
+      - name: Instalar Dependências e Construir
+        run: npm install && npm run build
 
-      - name: Publish
+      - name: Publicar Pacote
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

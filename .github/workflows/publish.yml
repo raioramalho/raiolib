@@ -30,6 +30,8 @@ jobs:
             exit 1
           fi
           echo "Todos os segredos necessários estão configurados."
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Validar Login no NPM
         run: |

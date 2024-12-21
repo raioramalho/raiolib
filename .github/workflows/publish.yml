@@ -31,13 +31,7 @@ jobs:
           fi
           echo "Todos os segredos necessários estão configurados."
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # - name: Validar Login no NPM
-      #   run: |
-      #     npm whoami || (echo "Erro: Não foi possível autenticar no NPM. Verifique o token de autenticação." >&2 && exit 1)
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}      
 
       - name: Verificar Dependências
         run: |
